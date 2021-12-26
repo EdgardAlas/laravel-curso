@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-</head>
-<body>
+@extends("layouts.master")
+
+@section('content')
     <h1>List of Products</h1>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="bg-light">
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Jabon</td>
-                    <td>Jabon 1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jabon 3</td>
-                    <td>Jabon 4</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+    @empty($productos)
+        <div class="alert alert-warning">
+            This list of products is empty
+        </div>
+    @else
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="bg-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($productos as $producto)
+                        <tr>
+                            <td>{{ $producto->id }}</td>
+                            <td>{{ $producto->title }}</td>
+                            <td>{{ $producto->description }}</td>
+                            <td>{{ $producto->price }}</td>
+                            <td>{{ $producto->stock }}</td>
+                            <td>{{ $producto->status }}</td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    @endempty
+@endsection

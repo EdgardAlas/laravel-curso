@@ -10,9 +10,9 @@ class ProductController extends Controller
     public function index()
     {
         // $product = DB::table(("products"))->get();
-        $product = Product::all();
-        dd($product);
-        return view("products.index");
+        $products = Product::all();
+        // dd($products);
+        return view("products.index")->with((['productos' => $products]));
     }
 
     public function create()
@@ -25,9 +25,12 @@ class ProductController extends Controller
     public function show($product)
     {
         // $products = DB::table(("products"))->find($product);
-        $products = Product::findOrFail($product);
-        dd($products);
-        return view("products.show");
+        $product = Product::findOrFail($product);
+        // dd($product);
+        return view("products.show")->with([
+            "producto" => $product,
+            "html" => "<h2>Subtitle</h2>"
+        ]);
     }
 
     public function edit($product)
