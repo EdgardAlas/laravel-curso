@@ -29,4 +29,4 @@ Route::get("/products/{product}/edit", [ProductController::class, "edit"])->name
 
 Route::match(["put", "patch"], "/products/{product}", [ProductController::class, "update"])->name("products.update");
 
-Route::delete("/products/{product}", [ProductController::class, "delete"])->name("products.delete");
+Route::delete("/products/{product}", [ProductController::class, "destroy"])->name("products.delete");

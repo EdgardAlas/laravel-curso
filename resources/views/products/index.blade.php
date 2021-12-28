@@ -1,11 +1,8 @@
-@extends("layouts.master")
-
-@section('content')
+@extends("layouts.master") @section('content')
     <h1>List of Products</h1>
+    <a class="btn btn-success" href="{{ route('products.create') }}">Create a product</a>
     @empty($productos)
-        <div class="alert alert-warning">
-            This list of products is empty
-        </div>
+        <div class="alert alert-warning">This list of products is empty</div>
     @else
         <div class="table-responsive">
             <table class="table table-striped">
@@ -17,6 +14,7 @@
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,11 +26,21 @@
                             <td>{{ $producto->price }}</td>
                             <td>{{ $producto->stock }}</td>
                             <td>{{ $producto->status }}</td>
+                            <td>
+                                <a class="btn btn-link"
+                                    href="{{ route('products.show', ['product' => $producto->id]) }}">Show</a>
+                                <a class="btn btn-link"
+                                    href="{{ route('products.edit', ['product' => $producto->id]) }}">Edit</a>
+
+                                <form method="POST" action="{{ route('products.delete', ['product' => $producto->id]) }}">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit" class="btn btn-link">delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
         </div>
-    @endempty
-@endsection
+        @endempty @endsection
