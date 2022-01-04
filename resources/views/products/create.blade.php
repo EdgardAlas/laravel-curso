@@ -1,4 +1,4 @@
-@extends("layouts.master") @section('content')
+@extends("layouts.app") @section('content')
     <h1>Create a product</h1>
     <form action="{{ route('products.store') }}" method="post">
         @csrf
@@ -24,7 +24,7 @@
             </div>
             <div class="col">
                 <label for="status">Status</label>
-                <select class="custom-select" name="status" required id="status">
+                <select class="custom-select form-select" name="status" required id="status">
                     <option value="">Select...</option>
                     <option value="available" {{ old('status') === 'available' ? 'selected' : '' }}>Available...</option>
                     <option value="unavailable" {{ old('status') === 'unavailable' ? 'selected' : '' }}>Unavailable...

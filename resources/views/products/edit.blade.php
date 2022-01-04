@@ -1,4 +1,4 @@
-@extends("layouts.master") @section('content')
+@extends("layouts.app") @section('content')
     <h1>Edit a product</h1>
     <form action="{{ route('products.update', ['product' => old('id') ?? $product->id]) }}" method="post">
         @csrf
@@ -26,7 +26,7 @@
             </div>
             <div class="col">
                 <label for="status">Status</label>
-                <select class="custom-select" name="status" id="status" required>
+                <select class="custom-select form-select" name="status" id="status" required>
                     <option value="">Select...</option>
                     <option {{ old('status') ?? $product->status === 'available' ? 'selected' : '' }} value="available">
                         Available...
