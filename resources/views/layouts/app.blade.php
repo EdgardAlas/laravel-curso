@@ -36,7 +36,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto"></ul>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('products.index') }}">{{ 'Products' }}</a>
+                        </li>
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -78,10 +82,10 @@
     <main class="py-4">
         <div class="container-fluid">
             {{-- @if (session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error') }}
-                </div>
-                @endif --}} @if (session()->has('success'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                    @endif --}} @if (session()->has('success'))
                 <div class="alert alert-success">
                     {{ session()->get('success') }}
                 </div>
@@ -97,7 +101,6 @@
                     </div>
                 @endif @yield('content')
         </div>
-
     </main>
 </div>
 </body>

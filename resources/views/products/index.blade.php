@@ -43,7 +43,7 @@
                     <form
                         method="POST"
                         class="d-inline"
-                        action="{{ route('products.delete', ['product' => $producto->id]) }}"
+                        action="{{ route('products.destroy', ['product' => $producto->id]) }}"
                     >
                         @csrf @method("DELETE")
                         <button type="submit" class="btn btn-link">
