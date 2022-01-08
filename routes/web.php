@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource("products", ProductController::class)->middleware(["auth"]);
-Route::get('/', [MainController::class, "index"])->name("main");
+Route::get('/', [MainController::class, "index"])->name("main")->middleware("auth");
 // Route::get('/products', [ProductController::class, "index"])->name("products.index");
 
 // Route::get("/products/create", [ProductController::class, "create"])->name("products.create");
