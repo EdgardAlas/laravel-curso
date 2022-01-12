@@ -20,12 +20,12 @@ class Product extends Model
 
     public function carts()
     {
-        return $this->belongsToMany(Cart::class, "cart_product", "product_id", "cart_id")->withPivot("quantity");
+        return $this->morphedByMany(Cart::class, "productable")->withPivot("quantity");
     }
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class, "order_product", "product_id", "order_id")->withPivot("quantity");
+        return $this->morphedByMany(Order::class, "productable")->withPivot("quantity");
     }
 
     public function images()
