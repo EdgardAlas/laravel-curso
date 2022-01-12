@@ -31,6 +31,15 @@
                     </option>
                 </select>
             </div>
+            <div class="col">
+                <label for="status">test</label>
+                <select class="custom-select form-select" name="test" required id="test">
+                    <option value="">Select...</option>
+                    <option value="available" {{ old('status') === 'available' ? 'selected' : '' }}>Available...</option>
+                    <option value="unavailable" {{ old('status') === 'unavailable' ? 'selected' : '' }}>Unavailable...
+                    </option>
+                </select>
+            </div>
 
             <div class="col">
                 <button type="submit" class="btn btn-primary btn-lg">

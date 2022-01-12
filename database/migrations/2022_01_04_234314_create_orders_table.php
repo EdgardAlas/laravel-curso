@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string("status")->default("pending");
             //custumer id
             $table->timestamps();
+            $table->bigInteger("costumer_id")->unsigned();
+            $table->foreign("costumer_id")->references("id")->on("users");
         });
     }
 

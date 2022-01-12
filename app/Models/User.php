@@ -44,4 +44,19 @@ class User extends Authenticatable
     ];
 
     protected $dates = ["admin_since"];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, "costumer_id");
+    }
+
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Order::class, "costumer_id");
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, "imageable");
+    }
 }

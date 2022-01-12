@@ -15,5 +15,21 @@ class Order extends Model
      */
     protected $fillable = [
         'status',
+        'costumer_id'
     ];
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    public function costumer()
+    {
+        return $this->belongsTo(User::class, "costumer_id");
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, "order_product", "order_id", "product_id")->withPivot("quantity");
+    }
 }
