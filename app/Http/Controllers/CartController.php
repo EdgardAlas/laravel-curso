@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use App\Models\Cart;
+use App\Services\CartService;
 
 class CartController extends Controller
 {
+    public $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +23,13 @@ class CartController extends Controller
     public function index()
     {
         //
+
+        $cart = $this->cartService->getFromCookie();
+
+        // return response()->json($cart);
+        return view("carts.index")->with([
+            "cart" => $cart
+        ]);
     }
 
     /**
