@@ -11,6 +11,7 @@ class CartService
     public function getFromCookie()
     {
         $cartId = Cookie::get("cart");
+        // $cart = Cart::with("products")->where("carts.id", $cartId)->first();
         $cart = Cart::find($cartId);
         return $cart;
     }

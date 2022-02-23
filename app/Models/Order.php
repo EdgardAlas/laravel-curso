@@ -30,6 +30,11 @@ class Order extends Model
 
     public function products()
     {
-        return $this->morphToMany(Product::class, "productable")->wherePivot("quantity");
+        return $this->morphToMany(Product::class, "productable")->withPivot("quantity");
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->products->pluck("total")->sum();
     }
 }
